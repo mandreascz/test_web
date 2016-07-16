@@ -24,6 +24,19 @@
   font-weight: 700;
 }
 
+.title {
+  font-family: sans-serif;
+  font-style: oblique;;
+  font-size: 35;
+  font-weight: bold;
+}
+
+.legend{
+  font-family: cursive;
+  font-weight: bold;
+  font-size: 28
+}
+
 .node--source {
   fill: #2ca02c;
 }
@@ -72,7 +85,30 @@ var svg = d3.select("body").append("svg")
     .attr("width", diameter)
     .attr("height", diameter)
   .append("g")
-    .attr("transform", "translate(" + radius + "," + radius + ")");
+    .attr("transform", "translate(" + 0.9*radius + "," + radius + ")");
+
+svg.append("text")
+    .attr("x", 0)
+    .attr("y", - 1.1*innerRadius)
+    .attr('class', 'title')
+    .attr('text-anchor', 'middle')
+    .text("Visualization of network connections among users of Gnutella p2p network.")
+svg.append("text")
+    .attr("x", +radius-35)
+    .attr("y", - 0.75*innerRadius)
+    .attr('text-anchor', 'middle')
+    .attr('class', 'legend')
+    .text("Legend")
+svg.append("text")
+    .attr("x", +radius-85)
+    .attr("y", - 0.70*innerRadius)
+    .attr('class', 'node--target')
+    .text("Targets")
+svg.append("text")
+    .attr("x", +radius-20)
+    .attr("y", - 0.70*innerRadius)
+    .attr('class', 'node--source')
+    .text("Sources")
 
 var link = svg.append("g").selectAll(".link"),
     node = svg.append("g").selectAll(".node");
