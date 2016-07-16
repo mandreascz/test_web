@@ -64,7 +64,7 @@
 <script src="http://d3js.org/d3.v3.min.js"></script>
 <script>
 
-var diameter = 1250,
+var diameter = 750,
     radius = diameter / 2,
     innerRadius = radius - 120;
 
@@ -82,33 +82,32 @@ var line = d3.svg.line.radial()
     .angle(function(d) { return d.x / 180 * Math.PI; });
 
 var svg = d3.select("body").append("svg")
-    .attr("width", diameter)
+    .attr("width", diameter+100)
     .attr("height", diameter)
   .append("g")
     .attr("transform", "translate(" + 0.9*radius + "," + radius + ")");
 
 svg.append("text")
     .attr("x", 0)
-    .attr("y", - 1.1*innerRadius)
+    .attr("y", - 1.2*innerRadius)
     .attr('class', 'title')
     .attr('text-anchor', 'middle')
     .text("Visualization of network connections among users of Gnutella p2p network.")
 svg.append("text")
-    .attr("x", +radius-35)
-    .attr("y", - 0.75*innerRadius)
-    .attr('text-anchor', 'middle')
+    .attr("x", +radius-0.05*radius)
+    .attr("y", - 0.80*innerRadius)
     .attr('class', 'legend')
     .text("Legend")
 svg.append("text")
-    .attr("x", +radius-85)
+    .attr("x", +radius-0.2*radius)
     .attr("y", - 0.70*innerRadius)
     .attr('class', 'node--target')
-    .text("Targets")
+    .text("This node is a receiving node.")
 svg.append("text")
-    .attr("x", +radius-20)
-    .attr("y", - 0.70*innerRadius)
+    .attr("x", +radius-0.2*radius)
+    .attr("y", - 0.65*innerRadius)
     .attr('class', 'node--source')
-    .text("Sources")
+    .text("This node is a source node.")
 
 var link = svg.append("g").selectAll(".link"),
     node = svg.append("g").selectAll(".node");
